@@ -3,8 +3,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= Rails.application.credentials.db[ :username] %>
-  password: <%= Rails.application.credentials.db[ :password] %>
+  username: postgres
+  password: olikuj
   host: localhost
   port: 5432
   
