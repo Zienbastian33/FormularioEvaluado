@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @paciente %>
+
+<div>
+  <%= link_to "Editar este paciente", edit_paciente_path(@paciente) %> |
+  <%= link_to "Volver a lista de pacientes", pacientes_path %>
+
+  <%= button_to "Eliminar registro de paciente", @paciente, method: :delete %>
+</div>

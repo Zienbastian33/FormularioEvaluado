@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <h1>Pacientes</h1>
+
+  <!-- Campo de búsqueda -->
+<!-- Campo de búsqueda -->
+<div class="form-group">
+  <%= form_with(url: pacientes_path, method: "get", local: true) do |form| %>
+    <%= form.label :buscar_por_apellido %>
+    <%= form.text_field :apellido, class: "form-control" %>
+    <%= form.submit "Buscar", class: "btn btn-secondary mt-2" %>
+  <% end %>
+</div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Rut</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Ciudad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pacientes.each do |paciente| %>
+        <tr>
+          <td><%= paciente.rut %></td>
+          <td><%= paciente.nombres %></td>
+          <td><%= paciente.apellidos %></td>
+          <td><%= paciente.ciudad %></td>
+          <!-- ... -->
+          <td>
+            <%= link_to 'Editar', edit_paciente_path(paciente), class: "btn btn-warning" %>
+            <%= link_to 'Eliminar', paciente, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %>
+            <%= link_to 'Mostrar Paciente', paciente_path(paciente), class: "btn btn-info" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<%= link_to "New paciente", new_paciente_path %>
